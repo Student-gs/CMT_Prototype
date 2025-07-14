@@ -1,0 +1,2 @@
+you need to install python 3.10 and add it to environment variable paths
+you need to pip install yolo to dir and run the venv and install its requirements
