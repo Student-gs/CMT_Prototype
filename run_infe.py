@@ -35,11 +35,10 @@ def update_status(msg, color="green"):
 def check_cuda():
     if torch.cuda.is_available():
         device_name = torch.cuda.get_device_name(0)
-        update_status(f"✅ Running on GPU: {device_name}")
+        update_status(f"Running on GPU: {device_name}")
     else:
-        update_status("⚠️ Running on CPU.", "orange")
+        update_status("Running on CPU.", "orange")
 
-check_cuda()
 
 def open_folder(path):
     if os.name == 'nt':
@@ -55,17 +54,17 @@ def infer_image():
         filetypes=[("Image Files", "*.jpg;*.jpeg;*.png;*.bmp;*.tiff")]
     )
     if file_path:
-        update_status("🖼 Running inference on image...")
+        update_status("Running inference on image...")
         threading.Thread(target=run_infer_image, args=(file_path,)).start()
 
 def run_infer_image(file_path):
     try:
         results = model(file_path, save=True, project='runs', name='detect', device=0)
         result_folder = results[0].save_dir
-        update_status(f"✅ Image saved to: {result_folder}")
+        update_status(f"Image saved to: {result_folder}")
         open_folder(result_folder)
     except Exception as e:
-        update_status(f"❌ Error: {e}", "red")
+        update_status(f"Error: {e}", "red")
 
 def infer_video():
     file_path = filedialog.askopenfilename(
@@ -73,17 +72,17 @@ def infer_video():
         filetypes=[("Video Files", "*.mp4;*.avi;*.mov;*.mkv")]
     )
     if file_path:
-        update_status("🎥 Running inference on video...")
+        update_status("Running inference on video...")
         threading.Thread(target=run_infer_video, args=(file_path,)).start()
 
 def run_infer_video(file_path):
     try:
         results = model(file_path, save=True, project='runs', name='detect', device=0)
         result_folder = results[0].save_dir
-        update_status(f"✅ Video saved to: {result_folder}")
+        update_status(f"Video saved to: {result_folder}")
         open_folder(result_folder)
     except Exception as e:
-        update_status(f"❌ Error: {e}", "red")
+        update_status(f"Error: {e}", "red")
 
 def infer_live_feed():
     update_status("📹 Starting live feed...")
@@ -100,7 +99,7 @@ def run_live_feed():
         cap.release()
 
     if cam_index == -1:
-        update_status("❌ No camera found.", "red")
+        update_status("No camera found.", "red")
         return
 
     save_dir = os.path.join('runs', 'detect', 'live')
@@ -136,38 +135,39 @@ def run_live_feed():
                 break
 
     except Exception as e:
-        update_status(f"❌ Live feed error: {e}", "red")
+        update_status(f"Live feed error: {e}", "red")
     finally:
         cap.release()
         out.release()
         cv2.destroyAllWindows()
-        update_status(f"✅ Live saved to: {video_path}")
+        update_status(f"Live saved to: {video_path}")
         open_folder(save_dir)
 
 # Buttons
-btn_image = tk.Button(root, text="🖼 Image Inference", width=20, height=2,
+btn_image = tk.Button(root, text="Image Inference", width=20, height=2,
                       bg=BUTTON_COLOR, fg=BUTTON_TEXT_COLOR, font=FONT,
                       command=infer_image)
 btn_image.grid(row=1, column=0, padx=10, pady=10)
 
-btn_video = tk.Button(root, text="🎥 Video Inference", width=20, height=2,
+btn_video = tk.Button(root, text="Video Inference", width=20, height=2,
                       bg=BUTTON_COLOR, fg=BUTTON_TEXT_COLOR, font=FONT,
                       command=infer_video)
 btn_video.grid(row=1, column=1, padx=10, pady=10)
 
-btn_live = tk.Button(root, text="📹 Live Feed", width=20, height=2,
+btn_live = tk.Button(root, text="Live Feed", width=20, height=2,
                      bg=BUTTON_COLOR, fg=BUTTON_TEXT_COLOR, font=FONT,
                      command=infer_live_feed)
 btn_live.grid(row=2, column=0, padx=10, pady=10)
 
-btn_results = tk.Button(root, text="📁 Open Results", width=20, height=2,
+btn_results = tk.Button(root, text="Open Results", width=20, height=2,
                         bg=BUTTON_COLOR, fg=BUTTON_TEXT_COLOR, font=FONT,
                         command=lambda: open_folder('runs'))
 btn_results.grid(row=2, column=1, padx=10, pady=10)
 
-btn_exit = tk.Button(root, text="❌ Exit", width=20, height=1,
+btn_exit = tk.Button(root, text="Exit", width=10, height=1,
                      bg=EXIT_COLOR, fg=BUTTON_TEXT_COLOR, font=FONT,
                      command=root.quit)
 btn_exit.grid(row=3, column=0, columnspan=2, pady=(10, 10))
 
+check_cuda()
 root.mainloop()
