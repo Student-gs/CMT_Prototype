@@ -1,7 +1,7 @@
 
 # 🚀 Prototype Features
 
-This prototype is a **Python-based GUI application** built on YOLOv10 for object detection. It supports **image, video, and live feed inference** with GPU acceleration (if available).
+This prototype is a **Python-based GUI application** built on YOLOv10 for object detection. It supports **image, video, and live feed inference** with GPU acceleration (if available). Model used was trained on a custom dataset of tricycles, detection is limited to this class of tricycle (best.pt).
 
 ---
 
