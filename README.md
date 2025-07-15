@@ -1,10 +1,79 @@
-Here’s a **revised and polished version** of your README:
 
-It’s clearer, properly formatted, and I fixed small wording issues for a professional look:
+# 🚀 Prototype Features
+
+This prototype is a **desktop application** built on YOLOv10 for object detection. It supports **image, video, and live webcam inference** with GPU acceleration (if available).
 
 ---
 
-# 📦 YOLOv10 Setup Guide
+## 🌟 Key Features
+
+### 📷 1. **Image Inference**
+
+* Select an image file through a file explorer dialog (supports `.jpg`, `.png`, `.bmp`, etc.)
+* Automatically runs detection and saves annotated results.
+* Opens the results folder after inference.
+
+---
+
+### 🎥 2. **Video Inference**
+
+* Select a video file (supports `.mp4`, `.avi`, `.mov`, `.mkv`).
+* Processes the video frame-by-frame with YOLOv10.
+* Annotated video is saved and the folder is auto-opened.
+
+---
+
+### 📡 3. **Live Webcam Inference**
+
+* Detect objects in real time using your webcam.
+* Annotates live feed with detection boxes and labels.
+* **Additional Features:**
+
+  * 📝 Records the live session as an `.mp4` video.
+  * ⚡ Shows FPS (frames per second) and inference time overlay on the live feed.
+  * 🔴 Exit anytime by pressing `Q`.
+
+---
+
+### 💻 4. **GPU Acceleration**
+
+* Automatically detects NVIDIA GPU and runs with CUDA if available.
+* Falls back to CPU if no GPU is detected.
+
+---
+
+### 🎨 5. **Graphical User Interface (GUI)**
+
+* Simple and clean GUI using **Tkinter**:
+
+  * Two rows of large buttons for Image, Video, and Live inference.
+  * Red “Exit” button for closing the app.
+* Avoids console use—ideal for non-technical users.
+
+---
+
+## 📦 Technical Stack
+
+* **Python 3.10**
+* **Ultralytics YOLOv10**
+* **PyTorch** (CUDA-enabled)
+* **OpenCV** (Live feed + video processing)
+* **Tkinter** (GUI)
+
+---
+
+## 📁 Output
+
+* Annotated images/videos saved in:
+
+  ```
+  runs/detect
+  ```
+* Each inference creates a timestamped folder.
+
+---
+
+# 📦 YOLOv10 Prototype Setup Guide
 
 ## ✅ Before Installation
 
@@ -121,16 +190,3 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 ```bash
 pip install torch torchvision torchaudio
 ```
-
----
-
-## 🚀 Ready to Use
-
-You can now run YOLOv10 commands, or use your custom scripts for inference or training.
-
----
-
-Do you want me to:
-✅ Save this as `README.md` (Markdown) for GitHub?
-✅ Or `README.txt` for local use?
-✅ Or **both**?
