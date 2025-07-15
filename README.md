@@ -1,7 +1,7 @@
 
 # 🚀 Prototype Features
 
-This prototype is a **desktop application** built on YOLOv10 for object detection. It supports **image, video, and live webcam inference** with GPU acceleration (if available).
+This prototype is a **Python-based GUI application** built on YOLOv10 for object detection. It supports **image, video, and live feed inference** with GPU acceleration (if available).
 
 ---
 
@@ -23,9 +23,9 @@ This prototype is a **desktop application** built on YOLOv10 for object detectio
 
 ---
 
-### 📡 3. **Live Webcam Inference**
+### 📡 3. **Live Inference**
 
-* Detect objects in real time using your webcam.
+* Detect objects in real time using a live feed (webcam or stream).
 * Annotates live feed with detection boxes and labels.
 * **Additional Features:**
 
